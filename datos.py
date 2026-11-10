@@ -23,9 +23,9 @@ def datos_iniciales():
 
 def seleccionar_escenario():
   print("\n--- SELECCION DE ESCENARIO DE PRODUCCION ---")
-  print("1. Produccion Estable (Normal)")
-  print("2. Alta Demanda (Exigente)")
-  print("3. Produccion Critica (Restricciones fuertes)")
+  print("1. Produccion Estable (Normal: Materia prima = 50.000kg)")
+  print("2. Alta Demanda (Exigente. Materia prima = 60.000kg)")
+  print("3. Produccion Critica (Restricciones fuertes. Materia prima = 20.000kg)")
 
   opcion = 0
 
