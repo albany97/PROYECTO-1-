@@ -5,7 +5,7 @@
 CANT_MP_XUNIDAD = 15 #En kg
 TIEMP_XUNIDAD = 20 #En minutos
 
-def planificar_jornada(mp_disponible):
+def planificar_jornada(mp_actual):
     print("\n------ Planificacion de la jornada ------")
     prod_planificada = int(input("Ingrese la cantidad de unidades a producir: "))
     prod_demanda = int(input("Ingrese la demanda establecida para esta jornada: "))
@@ -24,7 +24,7 @@ def planificar_jornada(mp_disponible):
         continuar = False #Una especie de var. bandera para saber cuando parar o seguir
 
     else:
-        if mp_disponible < (prod_planificada * CANT_MP_XUNIDAD): 
+        if mp_actual < (prod_planificada * CANT_MP_XUNIDAD): 
             print("ALERTA: Materia prima insficiente para alcanzar la meta planificada!")
             print("Se aborta la operacion!")
             continuar = False
