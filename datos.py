@@ -39,16 +39,12 @@ def seleccionar_escenario():
 
   match opcion:
     case 1:
-      materia_prima_inicial = 100
-      horas_disp_inicial = 20
+      mp_inicial = 50000
      
     case 2:
-      materia_prima_inicial = 120
-      horas_disp_inicial = 30
-    
-    case 3:
-      materia_prima_inicial = 60
-      horas_disp_inicial = 15.0
-    
+      mp_inicial = 60000
 
-  return (materia_prima_inicial, horas_disp_inicial,)
+    case 3:
+      mp_inicial = 20000
+ 
+  return mp_inicial
