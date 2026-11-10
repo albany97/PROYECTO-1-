@@ -75,7 +75,7 @@ def problema_de_calidad(costo_acumulado, produccion_pendiente, desperdicio):
     return costo_acumulado, produccion_pendiente, desperdicio
 
 
-def incidencia_perdida_de_tiempo(horas_utilizadas, horas_perdidas, calidad, costo_acumulado):
+def incidencia_perdida_de_tiempo(horas_utilizadas, horas_perdidas, costo_acumulado):
     print("AVISO DE INCIDENCIA: Se produjo un retraso imprevisto en el proceso de producción.")
     print("1. Buscar personal de apoyo para acelerar el proceso.")
     print("2. Extender el turno de trabajo para recuperar el tiempo perdido y pagar horas extras (50$ en costos extras).")
@@ -98,7 +98,7 @@ def incidencia_perdida_de_tiempo(horas_utilizadas, horas_perdidas, calidad, cost
         horas_perdidas += 2
         print("Has declarado el resto del día como tiempo perdido y asumido la pérdida de horas. Horas perdidas:", horas_perdidas)
 
-    return horas_utilizadas, horas_perdidas, calidad, costo_acumulado
+    return horas_utilizadas, horas_perdidas, costo_acumulado
 
 
 def simular_incidencia_aleatoria(costo_acumulado, produccion_pendiente, horas_utilizadas, horas_perdidas, calidad, desperdicio, productos_defectuosos):
