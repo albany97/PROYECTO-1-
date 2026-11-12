@@ -55,20 +55,27 @@ while iniciar == True:
 
          #La parte de incidencias:
         costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa)
-        
+        print("\n------ Incidente -----")
 
         #Produccion:
         prod_obtenida, mp_consumida, mp_restante, tiemp_usado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD)
-        print(f"La producción obtenida durante esta jornada fue de: {prod_obtenida}")
+        print("\n====================================================")
+        print("                   Producción                       ")
+        print("====================================================")
+        print(f"\nLa producción obtenida durante esta jornada fue de: {prod_obtenida} unidades")
         print(f"La planta consumió un total de {mp_consumida}Kg de materia prima")
         print(f"Sobro un total de {mp_restante}Kg de materia prima")
-
 
         #Control de la mp
         mp_actual = mp_restante
 
         #Control de calidad:
         defectos_porc, prod_defectuosa, prod_real, porc_defectos, porc_buenos, calidad = control_calidad(prod_obtenida)
+        print("\n------ Control de calidad -----")
+        print(f"\nDurante esta jornada se presentó un margen de error del: {defectos_porc}%")
+        print(f"Se obtuvo un total de {prod_real}und. de productos en optimas condiciones")
+        print(f"Mientras que hubieron {prod_defectuosa}und. de productos defectuosos")
+        print(f"Concluye en un {porc_buenos}% de productos buenos y {porc_defectos}% de productos defectuosos")
 
         #costos
         costo_acumulado = calcular_costo_jornada(mp_consumida, tiemp_gastado, prod_defectuosa, costo_acumulado)
