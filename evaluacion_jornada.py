@@ -45,7 +45,7 @@ def estado_jornada(prod_planificada, prod_obtenida, calidad, eficiencia, prod_de
 
 
 #Resultado final de la simulacion 
-def informe_finalinforme_final(nombre_planta, nombre_supervisor, prod_planificada_total, prod_real_total, prod_defectuosa_total, costo_acumulado_total, calidad_prom):
+def informe_final(nombre_planta, nombre_supervisor, prod_planificada_total, prod_real_total, prod_defectuosa_total, costo_acumulado_total, calidad_prom):
   
   if prod_planificada_total > 0:
     cumplimiento_total = (prod_real_total / prod_planificada_total) * 100
