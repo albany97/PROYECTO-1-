@@ -1,4 +1,4 @@
-def calcular_costo_jornada(mp_consumida, tiemp_gastado, prod_defectuosa, costo_acumulado):
+def calcular_costo_jornada(mp_consumida, tiemp_gastado, prod_defectuosos, costo_acumulado):
 
     #establecer valores de costos unitarios
     valor_mp = 200.0
@@ -8,7 +8,7 @@ def calcular_costo_jornada(mp_consumida, tiemp_gastado, prod_defectuosa, costo_a
     #gastos de la jornada
     gasto_materia_prima = mp_consumida * valor_mp
     gasto_tiempo_perdido = tiemp_gastado * valor_tiemp_gastado
-    gasto_penalizaciones = prod_defectuosa * valor_prod_defectuosos
+    gasto_penalizaciones = prod_defectuosos * valor_prod_defectuosos
 
     total_gastos_jornada = gasto_materia_prima + valor_tiemp_gastado + gasto_penalizaciones
 
