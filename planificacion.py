@@ -29,9 +29,9 @@ def planificar_jornada(mp_actual):
             print("Se aborta la operacion!")
             continuar = False
 
-        elif tiemp_disponible < (prod_planificada * TIEMP_XUNIDAD):
+        elif tiemp_disponible < ((prod_planificada / lineas_disp) * TIEMP_XUNIDAD):
             print("ALERTA: Horas insuficientes para alcanzar la meta planificada!")
-            prod_planificada = tiemp_disponible // TIEMP_XUNIDAD
+            prod_planificada = (tiemp_disponible // TIEMP_XUNIDAD) * lineas_disp
             print(f"MODIFICACION: Plan ajustado a: {prod_planificada} unidades por razones de tiempo")
             continuar = True
 
