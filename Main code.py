@@ -20,6 +20,8 @@ from incidencias import simular_incidencia_aleatoria
 
 from sistema_de_costos import calcular_costo_jornada
 
+from info_final import panel_estado, informe_final
+
 #Constantes
 CANT_MP_XUNIDAD = 15 #En kg
 TIEMP_XUNIDAD = 20 #En minutos
@@ -39,7 +41,21 @@ while iniciar == True:
     desperdicio = 0
     prod_defectuosa = 0
 
+    #variables acumulativas reportes
+    prod_tot_plan = 0
+    prod_tot_real = 0
+    defectos_tot = 0
+    desperdicio_tot = 0
+    costo_total_acumulado = 0
+    calidad_promedio = 0
+    eficiencia_promedio = 0
+
+
     for jornada in range(0, 5):
+
+        print(f"\n=========================================")
+        print(f"           JORNADA {(jornada + 1)} DE 5        ")
+        print(f"=========================================")
 
         #Planificacion
         prod_planificada, prod_demanda, lineas_disp, tiemp_disponible, continuar = planificar_jornada(mp_actual) 
@@ -81,16 +97,70 @@ while iniciar == True:
         #costos
         costo_acumulado = calcular_costo_jornada(mp_consumida, tiemp_gastado, prod_defectuosa, costo_acumulado)
 
-        #panel de estado
-        #indicadores de procesos
-        #evaluacion de cada jornada
+        # Llamada al panel de estado al terminar cada jornada:
+
+        #produccion pendiente
+        prod_pend = prod_planificada - prod_obtenida
+        if prod_pend < 0:
+            prod_pend = 0
+
+        #eficiencia jornada   
+        if tiemp_disponible > 0:
+            eficiencia_jornada = ((tiemp_gastado * 60) / tiemp_disponible) * 100
+            if eficiencia_jornada > 100.0:
+                    eficiencia_jornada = 100.0
+        else:
+            eficiencia_jornada = 0.0
+    
+
+        panel_estado(
+            prod_planificada,
+            prod_obtenida,
+            prod_pend,
+            mp_actual,
+            desperdicio,
+            tiemp_disponible,
+            tiemp_gastado,
+            horas_perdidas,
+            prod_defectuosa,
+            porc_buenos,
+            costo_acumulado,
+            eficiencia_jornada,
+        )
+
+        estado_jornada(
+            prod_planificada, 
+            prod_obtenida, 
+            calidad, 
+            eficiencia_jornada, 
+            prod_defectuosa, 
+            prod_real,
+        )
+
+        prod_tot_plan += prod_planificada
+        prod_tot_real += prod_obtenida 
+        defectos_tot += prod_defectuosa
+        desperdicio_tot += desperdicio
+        costo_total_acumulado = costo_acumulado
+        calidad_promedio += porc_buenos
+        eficiencia_promedio += eficiencia_jornada
+
+
+    calidad_promedio = calidad_promedio / 5
+    eficiencia_promedio = eficiencia_promedio / 5
+
+    informe_final(
+        nombre_planta, 
+        nombre_supervisor,
+        prod_tot_plan, 
+        prod_tot_real,
+        defectos_tot, 
+        desperdicio_tot,
+        costo_total_acumulado, 
+        calidad_promedio,
+        eficiencia_promedio,
+)
         
-
-
-
-
-
-
     #Reinicio de simulacion con var. bandera 
     print("Deseas reiniciar la simulacion?")
     iniciar_choice = input("Tu respuesta aca (Si/No): ")
