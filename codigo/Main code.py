@@ -118,7 +118,6 @@ while iniciar == True:
             prod_obtenida,
             prod_pend,
             mp_actual,
-            desperdicio,
             tiemp_disponible,
             tiemp_gastado,
             horas_perdidas,
@@ -146,8 +145,8 @@ while iniciar == True:
         eficiencia_promedio += eficiencia_jornada
 
 
-    calidad_promedio = calidad_promedio / 5
-    eficiencia_promedio = eficiencia_promedio / 5
+    calidad_promedio = calidad_promedio / jornada
+    eficiencia_promedio = eficiencia_promedio / jornada
 
     informe_final(
         nombre_planta, 

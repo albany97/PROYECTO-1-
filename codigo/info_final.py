@@ -3,7 +3,6 @@ def panel_estado(
     prod_obtenida,
     prod_pend,
     mp_actual,
-    desperdicio,
     tiemp_disponible,
     tiemp_gastado,
     horas_perdidas,
@@ -19,7 +18,6 @@ def panel_estado(
     print(f"Producción realizada:   {prod_obtenida}")
     print(f"Producción pendiente:   {prod_pend}")
     print(f"Materia prima:          {mp_actual} kg")
-    print(f"Desperdicio:            {round(desperdicio, 1)}")
     print(f"Horas disponibles:      {round((tiemp_disponible / 60), 2)}")
     print(f"Horas utilizadas:       {round(tiemp_gastado, 2)}")
     print(f"Horas perdidas:         {round(horas_perdidas, 2)}")
