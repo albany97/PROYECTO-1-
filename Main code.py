@@ -54,11 +54,12 @@ while iniciar == True:
         costo_acumulado += costo_mantenimiento
 
          #La parte de incidencias:
-        costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa)
         print("\n------ Incidente -----")
+        costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa)
+
 
         #Produccion:
-        prod_obtenida, mp_consumida, mp_restante, tiemp_usado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD)
+        prod_obtenida, mp_consumida, mp_restante, tiemp_gastado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD)
         print("\n====================================================")
         print("                   Producción                       ")
         print("====================================================")
@@ -73,8 +74,8 @@ while iniciar == True:
         defectos_porc, prod_defectuosa, prod_real, porc_defectos, porc_buenos, calidad = control_calidad(prod_obtenida)
         print("\n------ Control de calidad -----")
         print(f"\nDurante esta jornada se presentó un margen de error del: {defectos_porc}%")
-        print(f"Se obtuvo un total de {prod_real}und. de productos en optimas condiciones")
-        print(f"Mientras que hubieron {prod_defectuosa}und. de productos defectuosos")
+        print(f"Se obtuvo un total de {prod_real} und. de productos en optimas condiciones")
+        print(f"Mientras que hubieron {prod_defectuosa} und. de productos defectuosos")
         print(f"Concluye en un {porc_buenos}% de productos buenos y {porc_defectos}% de productos defectuosos")
 
         #costos
