@@ -54,7 +54,7 @@ while iniciar == True:
         costo_acumulado += costo_mantenimiento
 
          #La parte de incidencias:
-        costo_acumulado, produccion_pendiente, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, produccion_pendiente, horas_perdidas, desperdicio, prod_defectuosa)
+        costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, prod_planificada, horas_perdidas, desperdicio, prod_defectuosa)
         
 
         #Produccion:
