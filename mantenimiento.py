@@ -53,7 +53,8 @@ def mantenimiento(lineas_disp, tiemp_disponible):
         print("-> La planta operará sin intervenciones técnicas en este turno.")
 
     # Afectamos las variables de producción (quitamos el tiempo del mantenimiento)
-    #Uso el max por si resulta en num. negativo, entonces escogera el max. entre ambos (el 0.0)
-    tiemp_disponible = max(0.0, tiemp_disponible - tiemp_gastado)
+    tiemp_disponible =  tiemp_disponible - tiemp_gastado
+    if tiemp_disponible < 0:
+        tiemp_disponible = 0
 
     return lineas_disp, tiemp_disponible, costo_mantenimiento, tiemp_gastado 
