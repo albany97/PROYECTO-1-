@@ -35,6 +35,9 @@ while iniciar == True:
     mp_consumida = 0
     costo_mantenimiento = 0
     costo_acumulado = 0
+    horas_perdidas = 0
+    desperdicio = 0
+    prod_defectuosa = 0
 
     for jornada in range(0, 5):
 
@@ -50,12 +53,16 @@ while iniciar == True:
         #Asi va acumulando de una
         costo_acumulado += costo_mantenimiento
 
-        #La parte de incidencias:
-        costo_acumulado, prod_planificada, tiemp_disponible, horas_perdidas, calidad_jornada, desperdicio, productos_defectuosos = simular_incidencia_aleatoria(
-        costo_acumulado, prod_planificada, tiemp_disponible, horas_perdidas, desperdicio, productos_defectuosos)
+         #La parte de incidencias:
+        costo_acumulado, produccion_pendiente, horas_perdidas, desperdicio, prod_defectuosa = simular_incidencia_aleatoria(costo_acumulado, produccion_pendiente, horas_perdidas, desperdicio, prod_defectuosa)
+        
 
         #Produccion:
         prod_obtenida, mp_consumida, mp_restante, tiemp_usado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD)
+        print(f"La producción obtenida durante esta jornada fue de: {prod_obtenida}")
+        print(f"La planta consumió un total de {mp_consumida}Kg de materia prima")
+        print(f"Sobro un total de {mp_restante}Kg de materia prima")
+
 
         #Control de la mp
         mp_actual = mp_restante
