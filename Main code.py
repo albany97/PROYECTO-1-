@@ -59,7 +59,7 @@ while iniciar == True:
 
 
         #Produccion:
-        prod_obtenida, mp_consumida, mp_restante, tiemp_gastado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD)
+        prod_obtenida, mp_consumida, mp_restante, tiemp_gastado = calcular_produccion(tiemp_disponible, TIEMP_XUNIDAD, lineas_disp, mp_actual, CANT_MP_XUNIDAD, prod_planificada)
         print("\n====================================================")
         print("                   Producción                       ")
         print("====================================================")
